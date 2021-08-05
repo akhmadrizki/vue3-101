@@ -1,27 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div class="app">
+    <p>{{ name }} - {{ age }}</p>
+    <button @click="changeName('yoga')">Change Name</button>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
 
 export default defineComponent({
   name: "App",
-  components: {
-    HelloWorld,
+  components: {},
+  data() {
+    return {
+      name: "Link",
+      age: 21 as number,
+    };
+  },
+  methods: {
+    changeName(name: string) {
+      this.name = name;
+      return name;
+    },
   },
 });
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
