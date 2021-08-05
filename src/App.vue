@@ -1,27 +1,35 @@
 <template>
   <div class="app">
-    <p>{{ name }} - {{ age }}</p>
-    <button @click="changeName('yoga')">Change Name</button>
+    <p>{{ jobs[0].location }}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import Job from "./types/Job";
 
 export default defineComponent({
   name: "App",
   components: {},
-  data() {
-    return {
-      name: "Link",
-      age: 21 as number,
-    };
-  },
-  methods: {
-    changeName(name: string) {
-      this.name = name;
-      return name;
-    },
+  setup() {
+    // const state = reactive({
+    //   name: "Link",
+    //   age: 21 as number,
+    // });
+    // state.name = "Yoga Ganteng";
+    // return { ...toRefs(state) };
+    // const name = ref("Link");
+    // const age = ref(21);
+    // return { name, age };
+
+    const jobs = ref<Job[]>([
+      { title: "Daily Worker", location: "Nusa Dua", salary: 100000, id: "1" },
+      { title: "Tukang Sapu", location: "Kuta", salary: 100000, id: "2" },
+      { title: "Waitress", location: "Denpasar", salary: 100000, id: "3" },
+      { title: "House Keeping", location: "Ubud", salary: 100000, id: "4" },
+    ]);
+
+    return { jobs };
   },
 });
 </script>
